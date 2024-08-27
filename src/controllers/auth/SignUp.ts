@@ -24,6 +24,7 @@ const UserSignUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { form } = data;
     form.password = bcryptjs.hashSync(form.password, bcryptjs.genSaltSync(10));
+    form.dateOfBirth = new Date(form.dateOfBirth);
 
     const existingUser = await UserRepo.findOne({
       where: { email: form.email },

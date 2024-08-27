@@ -15,8 +15,10 @@ AggregateError
  [errors]:
 ```
 
-A. Confirm that your network connection is stable
+A. Confirm that your network connection is stable.
+
 B. Stop the Development Server and restart with `npm run dev`
+
 C. Disable IPv6 with the commands below
 
 ```bash
@@ -32,13 +34,13 @@ When you make changes to your Model/Entity, you can run create a migration file 
 ### Generate a Migration File
 
 ```bash
-npx typeorm-ts-node-commonjs migration:generate ./src/orm/migrations/<NAME_OF_MIGRATION_FILE> -d ./src/orm/data-source.ts
+npx typeorm-ts-node-commonjs migration:generate ./src/typeorm/migrations/<NAME_OF_MIGRATION_FILE> -d ./src/typeorm/data-source.ts
 ```
 
 ### Run all Pending Migrations
 
 ```bash
-npx typeorm-ts-node-commonjs migration:run -d ./src/orm/data-source.ts
+npx typeorm-ts-node-commonjs migration:run -d ./src/typeorm/data-source.ts
 ```
 
 ### Run a Specific Migration
@@ -46,7 +48,7 @@ npx typeorm-ts-node-commonjs migration:run -d ./src/orm/data-source.ts
 Copy the name of the migration file exactly as it was created in the migrations folder.
 
 ```bash
-npx typeorm-ts-node-commonjs migration:run --name <MIGRATION_FILE_NAME> -d ./src/orm/data-source.ts
+npx typeorm-ts-node-commonjs migration:run --name <MIGRATION_FILE_NAME> -d ./src/typeorm/data-source.ts
 ```
 
 ### Revert Migration
@@ -54,5 +56,5 @@ npx typeorm-ts-node-commonjs migration:run --name <MIGRATION_FILE_NAME> -d ./src
 The command below will revert the last migration you made. You can revert multiple migrations in the order in which they were made by running the command multiple times.
 
 ```bash
-npx typeorm-ts-node-commonjs migration:revert  -d ./src/orm/data-source.ts
+npx typeorm-ts-node-commonjs migration:revert  -d ./src/typeorm/data-source.ts
 ```
