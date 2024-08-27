@@ -1,4 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
+import SignUp from '../../controllers/auth/SignUp';
+import SignIn from '../../controllers/auth/SignIn';
 
 const AuthRouter = Router();
 
@@ -17,13 +19,6 @@ const loginErrorHandler = (
 
 // SignUp Route
 AuthRouter.post('/signup', SignUp);
-
-// Confirm Login Status
-AuthRouter.get('/status', (request, response) => {
-  return request.user
-    ? response.json({ authenticated: true })
-    : response.json({ authenticated: false });
-});
+AuthRouter.post('/signin', SignIn);
 
 export default AuthRouter;
-

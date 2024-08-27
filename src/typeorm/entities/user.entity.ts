@@ -8,6 +8,7 @@ import {
   BeforeInsert,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
+
 import { Book } from './book.entity';
 
 @Entity()
