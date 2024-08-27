@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BeforeInsert,
+  BeforeUpdate,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { User } from './user.entity';
@@ -21,10 +22,10 @@ export class Book {
   @Column()
   author!: string;
 
-  @CreateDateColumn()
+  @Column()
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @Column()
   updatedAt!: Date;
 
   @ManyToOne(() => User, (user) => user.books)
@@ -33,5 +34,10 @@ export class Book {
   @BeforeInsert()
   generateId() {
     this.id = uuidv4();
+    this.createdAt = new Date();
+  }
+  @BeforeUpdate()
+  updateTime() {
+    this.updatedAt = new Date();
   }
 }

@@ -3,9 +3,8 @@ import {
   Column,
   PrimaryColumn,
   OneToMany,
-  CreateDateColumn,
-  UpdateDateColumn,
   BeforeInsert,
+  BeforeUpdate,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -31,10 +30,10 @@ export class User {
   @Column()
   password!: string;
 
-  @CreateDateColumn()
+  @Column()
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @Column()
   updatedAt!: Date;
 
   @OneToMany(() => Book, (book) => book.user)
@@ -43,5 +42,10 @@ export class User {
   @BeforeInsert()
   generateId() {
     this.id = uuidv4();
+    this.createdAt = new Date();
+  }
+  @BeforeUpdate()
+  updateTime() {
+    this.updatedAt = new Date();
   }
 }

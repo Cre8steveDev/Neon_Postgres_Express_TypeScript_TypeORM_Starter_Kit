@@ -6,11 +6,12 @@ import { Book } from '../entities/book.entity';
 
 const { DEV_DATABASE_URI, MAIN_DATABASE_URI, DB_PORT, NODE_ENV } = process.env;
 
+// https://typeorm.io/data-source-options#postgres--cockroachdb-data-source-options
 const config: DataSourceOptions = {
   type: 'postgres',
   url: NODE_ENV === 'development' ? DEV_DATABASE_URI : MAIN_DATABASE_URI,
   port: parseInt(DB_PORT!, 10),
-  entities: ['src/orm/entities/**/*.ts'],
+  entities: [User, Book],
   migrations: ['src/orm/migrations/**/*.ts'],
   subscribers: [],
   logging: true,
