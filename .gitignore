@@ -1,2 +1,5 @@
 node_modules
 .env
+
+# Don't push migration files
+17248**.ts
