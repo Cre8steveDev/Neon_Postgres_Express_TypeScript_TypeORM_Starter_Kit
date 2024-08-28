@@ -59,3 +59,18 @@ Don't blindly trust your user 🤣
 
 1. Although TypeORM has built-in support for parameterized queries and automatically escapes input values (<https://typeorm.io/select-query-builder#using-parameters-to-escape-data>) you can, nope, YOU SHOULD also use a simple library like `sanitize` to clean user input and prevent SQL injection. Note that the sanitize library not only protects against SQL injection but also removes any HTML tags, JavaScript code, and other potentially harmful content.
 2. `express-validator`: `npm install express-validator`
+
+## Creating a Project or Branch for your Neon Postgres Database
+
+Creating a Project
+![Creating a Project](images/create_project.png)
+
+Main Branch/Default Database Connection Config
+![Main Connection STring](images/main_conn_string.png)
+
+After Creating a dev branch, copy the connection string
+![Dev Branch connection string](images/dev_branch_conn_string.png)
+
+## Quick Guide for TypeORM - Explore the TypeORM docs for optimizing your Entity/Models
+
+<https://typeorm.io/>

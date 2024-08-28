@@ -1,12 +1,17 @@
 # Project Starter Kit: Neon Postgres Database with Express Typescript and TypeORM
 
-Bootstrap your NodeJS/Express TypeScript Project in seconds and focus on scaling up to build a robust Backend Application/Server.
-
 This starter kit implemenents major CRUD Operations that you can leverage for quickly scaffolding your own models and database operations. From entity definition (Models), relationship, database configuration and initial setup with Jest so you can test your application.
+
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 Whether you're a beginning needing a quick start to work with the powerful combination of TypeScript + TypeORM + Neon Postgres + Express or an experienced developer this is the swiss knife of all starter kits.
 
 Take advantage of Neon's Branching feature! Provide a main and development branch DATABASE_URI and the database configuration kicks in with the appropriate database using the value of the NODE_ENV variable.
+
 ![Neon Postgres](image.png)
 
 All you need is your Connection string from your Neon Postgres Project!
@@ -108,6 +113,12 @@ npm run dev
 npm run test
 ```
 
+## Starter Kit Code Guide / Debugging Tips
+
+Connection Error? Migration Tips? Read below:
+
+[Click here to read some Tips for getting the best out of this starter kit.](./docs/README.md)
+
 ## Project Structure
 
 This Starter Kit follows a structured approach to organize code and resources. Here's an overview of the main directories and files:
@@ -138,10 +149,6 @@ project_root
 └── README.md              # Project documentation
 ```
 
-## Starter Kit Code Guide / Debugging Tips
-
-[Click here to read some Tips for getting the best out of this starter kit.](./docs/README.md)
-
 ## Database Configuration and Settings
 
 You can find the database configuration within the typeorm directory.
@@ -155,6 +162,10 @@ Test Current Endpoints on Postman (Use your local host as baseURL)
 ## Testing
 
 Create your tests within the tests/ directory and run `npm run test`. You can update the test script within the package.json script object.
+
+## Upcoming Update
+
+Interactive CLI Tool allowing you to choose between bootstrapping a config-only project or the full project with the Guide and Code Sample.
 
 ## Contributing
 
