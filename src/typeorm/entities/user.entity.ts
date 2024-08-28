@@ -7,6 +7,7 @@ import {
   BeforeUpdate,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -39,18 +40,17 @@ export class User {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  @OneToMany(() => Book, (book) => book.user)
+  @OneToMany(() => Book, (book) => book.user, {
+    cascade: ['insert', 'update'],
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn()
   books!: Book[];
 
   @BeforeInsert()
   generateId() {
     this.id = uuidv4();
-    // this.createdAt = new Date();
   }
-  // @BeforeUpdate()
-  // updateTime() {
-  //   this.updatedAt = new Date();
-  // }
 }
 
 // Learn more about Column types for Postgres

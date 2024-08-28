@@ -21,21 +21,15 @@ Brief description of your starter kit and its benefits.
 
 ## Project Structure
 
-## Code
-
-```bash
-npx typeorm-ts-node-commonjs migration:generate ./src/orm/migrations/CreateUserTable -d ./src/orm/data-source.ts
-```
-
 Explain the folder structure and key files
 
-## Configuration
+## Starter Kit Code Guide / Debugging Tips
+
+[Click here to read some Tips for getting the best out of this starter kit.](./docs/README.md)
+
+## Database Configuration and Settings
 
 How to configure the database and other settings
-
-## API Endpoints
-
-Document the available API endpoints
 
 ## NEON Postgres Features
 
@@ -44,6 +38,10 @@ Explain the Sequelize models and their relationships
 ## Database Models
 
 Explain the Sequelize models and their relationships
+
+## API Endpoints
+
+Document the available API endpoints
 
 ## Testing
 
@@ -55,8 +53,8 @@ Steps for deploying the application
 
 ## Contributing
 
-Guidelines for contributing to the project
+[Guidelines for contributing to the project](./CONTRIBUTING.md)
 
 ## License
 
-Specify the license
+[MIT LIcense](./LICENSE)

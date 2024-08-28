@@ -13,6 +13,8 @@ AggregateError
    at processTimers (node:internal/timers:514:7) {
  code: 'ETIMEDOUT',
  [errors]:
+
+ with a bunch of Ipv6 looking addresses....
 ```
 
 A. Confirm that your network connection is stable.
@@ -55,6 +57,5 @@ npx typeorm-ts-node-commonjs migration:revert  -d ./src/typeorm/data-source.ts
 
 Don't blindly trust your user 🤣
 
-1. Although TypeORM has built-in support for parameterized queries and automatically escapes input values.
-2. You can also use a simple library like `sanitize` to clean user input and prevent SQL injection. Note that the sanitize library not only protects against SQL injection but also removes any HTML tags, JavaScript code, and other potentially harmful content.
-3. `express-validator`: `npm install express-validator`
+1. Although TypeORM has built-in support for parameterized queries and automatically escapes input values (<https://typeorm.io/select-query-builder#using-parameters-to-escape-data>) you can, nope, YOU SHOULD also use a simple library like `sanitize` to clean user input and prevent SQL injection. Note that the sanitize library not only protects against SQL injection but also removes any HTML tags, JavaScript code, and other potentially harmful content.
+2. `express-validator`: `npm install express-validator`

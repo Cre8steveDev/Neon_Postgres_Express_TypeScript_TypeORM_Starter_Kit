@@ -31,16 +31,16 @@ export class Book {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  @ManyToOne(() => User, (user) => user.books)
+  // Define the relationship between the Book and
+  // the Uploaded user.
+  // Add this line to enable cascading delete
+  @ManyToOne(() => User, (user) => user.books, {
+    onDelete: 'CASCADE',
+  })
   user!: User;
 
   @BeforeInsert()
   generateId() {
     this.id = uuidv4();
-    // this.createdAt = new Date();
   }
-  // @BeforeUpdate()
-  // updateTime() {
-  //   this.updatedAt = new Date();
-  // }
 }

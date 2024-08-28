@@ -20,7 +20,7 @@ const setUpApp = async () => {
   const app = express();
 
   // Register middlewares on the app
-  app.use(cors());
+  app.use(cors({ origin: '*' }));
   app.use(cookieParser(COOKIE_SECRET!));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -40,7 +40,7 @@ const setUpApp = async () => {
   // Custom Error handler placed after all other routes
   app.use(customErrorHandler);
 
-  // Connect to Database and on success, start the server
+  // Connect to Database and on success, return the app instance
   await ConnectDatabase();
 
   // Start Server
