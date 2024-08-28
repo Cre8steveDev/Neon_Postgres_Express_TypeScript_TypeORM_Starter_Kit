@@ -12,9 +12,10 @@ const config: DataSourceOptions = {
   url: NODE_ENV === 'development' ? DEV_DATABASE_URI : MAIN_DATABASE_URI,
   port: parseInt(DB_PORT!, 10),
   entities: [User, Book],
-  migrations: ['src/orm/migrations/**/*.ts'],
+  migrations: ['src/typeorm/migrations/*.ts'],
   subscribers: [],
-  logging: true,
+  // logging: NODE_ENV === 'development' ? true : false,
+  logging: false,
   poolSize: 5,
   synchronize: false,
   ssl: {

@@ -1,50 +1,81 @@
+import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
-import { UserRepo } from '../../typeorm/data-source';
 import CustomError from '../../utils/CustomError';
-import validateSignUpForm from '../../utils/validateSignUp';
+import { UserRepo } from '../../typeorm/data-source';
+import validateSignInForm from '../../utils/validateSignIn';
 import type { NextFunction, Request, Response } from 'express';
 
 /**
- * UserSignUp - Controller for creating a New User Account
+ * UserSignIn - Controller for Signing In a User
  * @param req - Request Object from the Client
  * @param res - Response Object to reply to Client
- * @returns void
+ * @returns an object of appropriate response
  */
+const UserSignIn = async (req: Request, res: Response, next: NextFunction) => {
+  const data = validateSignInForm(req);
 
-const UserSignUp = async (req: Request, res: Response, next: NextFunction) => {
-  const data = validateSignUpForm(req);
-
-  // If An error occurs in validation
+  // If an error occurs in validation
   if (data.error || !data.form) {
-    const error = new CustomError(400, data.error, { success: false });
+    const error = new CustomError(400, data.error, {
+      success: false,
+      token: null,
+      user: null,
+    });
     return next(error);
   }
 
   try {
-    const { form } = data;
-    form.password = bcryptjs.hashSync(form.password, bcryptjs.genSaltSync(10));
+    const { email, password } = data.form;
+    console.log('LOGIN: ', data.form);
 
-    const existingUser = await UserRepo.findOne({
-      where: { email: form.email },
+    // Find the user by email
+    const user = await UserRepo.findOne({
+      where: { email },
+      select: ['email', 'fullName', 'password'],
     });
 
-    if (existingUser) {
-      const error = new CustomError(400, 'User already exists.', {
+    if (!user) {
+      const error = new CustomError(401, 'Invalid email or password', {
         success: false,
+        token: null,
+        user: null,
       });
       return next(error);
     }
 
-    // Create new user
-    const newUser = UserRepo.create(form);
-    const user = await UserRepo.save(newUser);
+    // Verify the password
+    const isPasswordValid = bcryptjs.compareSync(password, user.password);
 
-    return res
-      .status(201)
-      .json({ success: true, message: 'User Account created successfully.' });
+    if (!isPasswordValid) {
+      const error = new CustomError(401, 'Invalid email or password', {
+        success: false,
+        token: null,
+        user: null,
+      });
+      return next(error);
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET as string,
+      { expiresIn: '1h' } // Token expires in 1 hour
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: 'User signed in successfully',
+      token,
+      user: { fullName: user.fullName, email: user.email },
+    });
   } catch (error: any) {
-    return res.status(403).json({ success: false, message: error.message });
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+      token: null,
+      user: null,
+    });
   }
 };
 
-export default UserSignUp;
+export default UserSignIn;

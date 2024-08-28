@@ -4,20 +4,9 @@ import SignIn from '../../controllers/auth/SignIn';
 
 const AuthRouter = Router();
 
-const loginErrorHandler = (
-  err: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  if (err) {
-    return res.status(403).json({ message: 'Invalid Login Details' });
-  }
-
-  next();
-};
-
-// SignUp Route
+// Add Route and Controllers Related to Auth
+// Feel Free to Include other operations like
+// refresh token, generate/Verify OTP, e.t.c
 AuthRouter.post('/signup', SignUp);
 AuthRouter.post('/signin', SignIn);
 
