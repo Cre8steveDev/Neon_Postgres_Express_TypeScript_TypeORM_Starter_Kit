@@ -3,10 +3,10 @@ import {
   Column,
   PrimaryColumn,
   ManyToOne,
-  CreateDateColumn,
-  UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { User } from './user.entity';
@@ -20,12 +20,15 @@ export class Book {
   title!: string;
 
   @Column()
+  pageNumber!: number;
+
+  @Column()
   author!: string;
 
-  @Column()
+  @CreateDateColumn()
   createdAt!: Date;
 
-  @Column()
+  @UpdateDateColumn()
   updatedAt!: Date;
 
   @ManyToOne(() => User, (user) => user.books)
@@ -34,10 +37,10 @@ export class Book {
   @BeforeInsert()
   generateId() {
     this.id = uuidv4();
-    this.createdAt = new Date();
+    // this.createdAt = new Date();
   }
-  @BeforeUpdate()
-  updateTime() {
-    this.updatedAt = new Date();
-  }
+  // @BeforeUpdate()
+  // updateTime() {
+  //   this.updatedAt = new Date();
+  // }
 }

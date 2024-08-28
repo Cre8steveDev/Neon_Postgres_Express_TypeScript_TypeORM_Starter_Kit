@@ -43,14 +43,6 @@ npx typeorm-ts-node-commonjs migration:generate ./src/typeorm/migrations/<NAME_O
 npx typeorm-ts-node-commonjs migration:run -d ./src/typeorm/data-source.ts
 ```
 
-### Run a Specific Migration
-
-Copy the name of the migration file exactly as it was created in the migrations folder.
-
-```bash
-npx typeorm-ts-node-commonjs migration:run --name <MIGRATION_FILE_NAME> -d ./src/typeorm/data-source.ts
-```
-
 ### Revert Migration
 
 The command below will revert the last migration you made. You can revert multiple migrations in the order in which they were made by running the command multiple times.
@@ -58,3 +50,11 @@ The command below will revert the last migration you made. You can revert multip
 ```bash
 npx typeorm-ts-node-commonjs migration:revert  -d ./src/typeorm/data-source.ts
 ```
+
+## Preventing SQL Injection and Sanitizing User Input
+
+Don't blindly trust your user 🤣
+
+1. Although TypeORM has built-in support for parameterized queries and automatically escapes input values.
+2. You can also use a simple library like `sanitize` to clean user input and prevent SQL injection. Note that the sanitize library not only protects against SQL injection but also removes any HTML tags, JavaScript code, and other potentially harmful content.
+3. `express-validator`: `npm install express-validator`

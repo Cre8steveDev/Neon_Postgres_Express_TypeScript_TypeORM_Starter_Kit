@@ -5,6 +5,8 @@ import {
   OneToMany,
   BeforeInsert,
   BeforeUpdate,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,6 +14,7 @@ import { Book } from './book.entity';
 
 @Entity()
 export class User {
+  //https://typeorm.io/entities#entity-columns
   @PrimaryColumn('uuid')
   id!: string;
 
@@ -30,10 +33,10 @@ export class User {
   @Column()
   password!: string;
 
-  @Column()
+  @CreateDateColumn()
   createdAt!: Date;
 
-  @Column()
+  @UpdateDateColumn()
   updatedAt!: Date;
 
   @OneToMany(() => Book, (book) => book.user)
@@ -42,10 +45,13 @@ export class User {
   @BeforeInsert()
   generateId() {
     this.id = uuidv4();
-    this.createdAt = new Date();
+    // this.createdAt = new Date();
   }
-  @BeforeUpdate()
-  updateTime() {
-    this.updatedAt = new Date();
-  }
+  // @BeforeUpdate()
+  // updateTime() {
+  //   this.updatedAt = new Date();
+  // }
 }
+
+// Learn more about Column types for Postgres
+// https://typeorm.io/entities#column-types-for-postgres

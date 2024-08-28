@@ -11,7 +11,7 @@ const validateSignUpForm = (req: Request) => {
   const { fullName, email, dateOfBirth, phoneNumber, password } =
     req.body as TSignupForm;
 
-  // Use a better input validation like Joi or Zod
+  // Use a better input validation like Joi or Zod or sanitize or express-validator
   // And To Sanitize user input against SQL Injection
   if (!fullName) return { error: 'Required field: fullName', data: null };
   if (!email) return { error: 'Required field: email', data: null };

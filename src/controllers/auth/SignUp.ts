@@ -19,7 +19,6 @@ const UserSignUp = async (req: Request, res: Response, next: NextFunction) => {
     const error = new CustomError(400, data.error, { success: false });
     return next(error);
   }
-  console.log('DATA AFTER VALIDATION: ', data);
 
   try {
     const { form } = data;

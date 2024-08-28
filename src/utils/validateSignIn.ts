@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { TSigninForm, TSignupForm } from '../types/types';
+import { TSigninForm } from '../types/types';
 
 /**
  * Validates and sanitizes the sign-in form data.
@@ -10,8 +10,7 @@ import { TSigninForm, TSignupForm } from '../types/types';
 const validateSignInForm = (req: Request) => {
   const { email, password } = req.body as TSigninForm;
 
-  // Use a better input validation like Joi or Zod
-  // And To Sanitize user input against SQL Injection
+  // Use a better input validation like Joi or Zod or sanitize or express-validator
   if (!email) return { error: 'Required field: email', data: null };
   if (!password) return { error: 'Required field: password', data: null };
 
