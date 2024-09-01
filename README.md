@@ -8,7 +8,7 @@ This starter kit implemenents major CRUD Operations that you can leverage for qu
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
-Whether you're a beginning needing a quick start to work with the powerful combination of TypeScript + TypeORM + Neon Postgres + Express or an experienced developer this is the swiss knife of all starter kits.
+Whether you're a beginner needing a quick start to work with the powerful combination of TypeScript + TypeORM + Neon Postgres + Express or an experienced developer this is the swiss knife of all starter kits.
 
 Take advantage of Neon's Branching feature! Provide a main and development branch DATABASE_URI and the database configuration kicks in with the appropriate database using the value of the NODE_ENV variable.
 
@@ -163,9 +163,14 @@ Test Current Endpoints on Postman (Use your local host as baseURL)
 
 Create your tests within the tests/ directory and run `npm run test`. You can update the test script within the package.json script object.
 
-## Upcoming Update
+## CLI Tool (Npm Package)
+<https://www.npmjs.com/package/neon-express-typeorm>
+If you prefer to use the command line to quickly bootstrap your project, choosing the full kit or a basic setup, then you're welcome to use the cli tool
 
-Interactive CLI Tool allowing you to choose between bootstrapping a config-only project or the full project with the Guide and Code Sample.
+## Upcoming Update
+Extend current CLI Tool to allow for more customization letting you choose specific implementations based on your project needs.
+
+Working on a Vscode extension to boost productivity while  working on features - cutting down on time sorting through documentation.
 
 ## Contributing
 
