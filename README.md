@@ -170,7 +170,7 @@ If you prefer to use the command line to quickly bootstrap your project, choosin
 ## Upcoming Update
 Extend current CLI Tool to allow for more customization letting you choose specific implementations based on your project needs.
 
-Working on a Vscode extension to boost productivity while  working on features - cutting down on time sorting through documentation.
+Working on a Vscode snippets extension to boost productivity while  working on features - cutting down on time sorting through documentation.
 
 ## Contributing
 
